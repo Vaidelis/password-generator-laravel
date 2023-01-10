@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $pass = 0;
+    $pass = null;
     return view('welcome')->with('pass', $pass);
 })->name('main');
 Route::get('/generate', 'App\Http\Controllers\Controller@generatePass')->name('generate');
