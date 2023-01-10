@@ -99,6 +99,6 @@ class Controller extends BaseController
     public function savetofile($pass){
 
         Storage::put('file.txt', $pass);
-        return redirect()->route('main');
+        return redirect()->route('main')->with('pass', $pass);
     }
 }
