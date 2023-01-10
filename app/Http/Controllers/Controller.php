@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Storage;
 
 class Controller extends BaseController
 {
@@ -92,6 +93,12 @@ class Controller extends BaseController
                 $pass = $pass . $randomChar;
             }
         }
+        return view('welcome')->with('pass', $pass);
+    }
+    public function savetofile($pass){
+
+        Storage::put('file.txt', $pass);
+        //dd($pass);
         return view('welcome')->with('pass', $pass);
     }
 }

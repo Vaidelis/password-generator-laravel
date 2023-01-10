@@ -18,3 +18,4 @@ Route::get('/', function () {
     return view('welcome')->with('pass', $pass);
 });
 Route::get('/generate', 'App\Http\Controllers\Controller@generatePass')->name('generate');
+Route::get('/savetofile/{id}', 'App\Http\Controllers\Controller@savetofile')->name('savetofile');

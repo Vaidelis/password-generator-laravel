@@ -64,8 +64,8 @@
     <div class="container">
     <form action="{{route('generate')}}">
         <div>
-            <h3>Password strenght</h3>
-            <label><input type="checkbox" class="radio" value="1" name="complexity" />Letters and numbers</label>
+            <h3>Password generator</h3>
+            <label><input type="checkbox" class="radio" value="1" name="complexity" />Default</label>
             <label><input type="checkbox" class="radio" value="2" name="complexity" />Everything</label>
             <label><input type="checkbox" class="radio" value="3" name="complexity" />Only numbers</label>
             <label><input type="checkbox" class="radio" value="4" name="complexity" />Only letters</label>
@@ -80,6 +80,7 @@
             </label>
         </div>
     </form>
+        <br>
         <input type="text" value="{{$pass}}" id="pass">
         <div class="tooltip">
             <button onclick="myFunction()" onmouseout="outFunc()">
