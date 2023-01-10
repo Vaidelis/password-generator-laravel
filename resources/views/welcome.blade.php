@@ -19,16 +19,47 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
     <body class="antialiased">
+    <div class="container">
     <form action="{{route('generate')}}">
-        <tbody>
-        <tr>
-            <td><button class="btn3 btn-primary">Generuoti slaptažodį</button></td>
-            <td>{{$pass}}</td>
-        </tr>
-        </tbody>
+        <div>
+            <h3>Password strenght</h3>
+            <label><input type="checkbox" class="radio" value="1" name="complexity" />Letters and numbers</label>
+            <label><input type="checkbox" class="radio" value="2" name="complexity" />Everything</label>
+            <label><input type="checkbox" class="radio" value="3" name="complexity" />Only numbers</label>
+            <label><input type="checkbox" class="radio" value="4" name="complexity" />Only letters</label>
+        </div>
+        <div>
+            <label class="label">Password length(by default 8-12)</label>
+            <input placeholder="Your wanted length" type="number" name="price" class="form-control"/>
+        </div>
+        <div>
+            <label>
+                <button class="btn3 btn-primary">Generate Password</button>
+                {{$pass}}
+            </label>
+        </div>
 
     </form>
+    </div>
     </body>
 </html>
+<script>
+    $("input:checkbox").on('click', function() {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+</script>
