@@ -67,9 +67,9 @@
         <div>
             <h3>Password generator</h3>
             <label><input id="check" type="checkbox" class="radio" value="1" name="complexity" />Default</label>
-            <label><input id="check" type="checkbox" class="radio" value="2" name="complexity" />Everything</label>
-            <label><input id="check" type="checkbox" class="radio" value="3" name="complexity" />Only numbers</label>
-            <label><input id="check" type="checkbox" class="radio" value="4" name="complexity" />Only letters</label>
+            <label><input id="check1" type="checkbox" class="radio" value="2" name="complexity" />With special characters</label>
+            <label><input id="check2" type="checkbox" class="radio" value="3" name="complexity" />Only numbers</label>
+            <label><input id="check3" type="checkbox" class="radio" value="4" name="complexity" />Only letters</label>
         </div>
         <div>
             <label class="label">Password length(by default 8-12)</label>
@@ -138,9 +138,26 @@
     }
 </script>
 <script>
-    $('#check').change(function () {
-        $('#btncheck').prop("disabled", !this.checked);
-    }).change()
+    $(function() {
+        var chk = $('#check');
+        var chk1 = $('#check1');
+        var chk2 = $('#check2');
+        var chk3 = $('#check3');
+        var btn = $('#btncheck');
+
+        chk.on('change', function() {
+            btn.prop("disabled", !this.checked);//true: disabled, false: enabled
+        }).trigger('change'); //page load trigger event
+        chk1.on('change', function() {
+            btn.prop("disabled", !this.checked);//true: disabled, false: enabled
+        }).trigger('change'); //page load trigger event
+        chk2.on('change', function() {
+            btn.prop("disabled", !this.checked);//true: disabled, false: enabled
+        }).trigger('change'); //page load trigger event
+        chk3.on('change', function() {
+            btn.prop("disabled", !this.checked);//true: disabled, false: enabled
+        }).trigger('change'); //page load trigger event
+    });
 </script>
 
 
