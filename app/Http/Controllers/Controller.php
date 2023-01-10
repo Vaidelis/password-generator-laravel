@@ -16,7 +16,6 @@ class Controller extends BaseController
         $lowercase = 0;
         $uppercase = 0;
         $number = 0;
-        //$length = rand(8,12);
         $pass = "";
         $complex = $request->get('complexity');
         //------------------Password length
@@ -33,9 +32,10 @@ class Controller extends BaseController
                 $randomChar = $alphabet[rand(0, strlen($alphabet) - 1)];
                 $pass = $pass . $randomChar;
             }
-            if (preg_match('/[A-Z]/', $pass)) {
+            if (preg_match('/[A-Z]/', $pass)) { //checks does password have uppercase chars
                 $uppercase = 1;
-            } else if ($uppercase == 0) {
+            }
+            else if ($uppercase == 0) {
                 for ($i = 0; $i < 999; $i++) {
                     $randomChar = $pass[rand(0, strlen($pass) - 1)];
                     if (ctype_alpha($randomChar)) {
@@ -45,9 +45,10 @@ class Controller extends BaseController
                 $randomCharupper = strtoupper($randomChar);
                 $pass = str_replace($randomChar, $randomCharupper, $pass);
             }
-            if (preg_match('/[a-z]/', $pass)) {
+            if (preg_match('/[a-z]/', $pass)) {//checks does password have lowercase chars
                 $lowercase = 1;
-            } else if ($lowercase == 0) {
+            }
+            else if ($lowercase == 0) {
                 for ($i = 0; $i < 999; $i++) {
                     $randomChar = $pass[rand(0, strlen($pass) - 1)];
                     if (ctype_alpha($randomChar)) {
@@ -58,7 +59,7 @@ class Controller extends BaseController
                 $pass = str_replace($randomChar, $randomCharlower, $pass);
             }
             for ($i = 0; $i < strlen($pass); $i++) {
-                if (ctype_digit($pass[$i])) {
+                if (ctype_digit($pass[$i])) {//checks does password have numbers
                     $number = 1;
                     break;
                 }
@@ -98,7 +99,6 @@ class Controller extends BaseController
     public function savetofile($pass){
 
         Storage::put('file.txt', $pass);
-        //dd($pass);
-        return view('welcome')->with('pass', $pass);
+        return redirect()->route('main');
     }
 }

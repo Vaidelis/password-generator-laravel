@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $pass = 0;
     return view('welcome')->with('pass', $pass);
-});
+})->name('main');
 Route::get('/generate', 'App\Http\Controllers\Controller@generatePass')->name('generate');
 Route::get('/savetofile/{id}', 'App\Http\Controllers\Controller@savetofile')->name('savetofile');

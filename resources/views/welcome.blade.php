@@ -81,9 +81,9 @@
         </div>
     </form>
         <br>
-        <input type="text" value="{{$pass}}" id="pass">
+        <input type="text" value="{{$pass}}" id="pass" <?php if($pass == 0){?> hidden <?php } ?>>
         <div class="tooltip">
-            <button onclick="myFunction()" onmouseout="outFunc()">
+            <button onclick="myFunction()" onmouseout="outFunc()" <?php if($pass == 0){?> hidden <?php } ?>>
                 <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
                 Copy text
             </button>
@@ -91,7 +91,7 @@
     </div>
     <div>
         <a href="{{route('savetofile', $pass)}}">
-            <button class="btn3 btn-primary btn-xl">Save to file</button>
+            <button class="btn3 btn-primary btn-xl" <?php if($pass == 0){?> hidden <?php } ?>>Save to file</button>
         </a>
     </div>
     </body>
